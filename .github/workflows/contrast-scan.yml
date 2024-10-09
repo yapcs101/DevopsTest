@@ -29,7 +29,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Git checkout
-        uses: actions/checkout@v1
-      - name: Branch name
-        run: echo running on branch ${GITHUB_REF##*/}
+      - name: Get branch names
+        id: branch-names
+        uses: tj-actions/branch-names@v8
+      
+      - name: Current branch names
+        run: |
+          echo "${{ steps.branch-names.outputs.current_branch }}"
+        # Outputs: "feature/test" current PR branch.
