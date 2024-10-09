@@ -34,6 +34,5 @@ jobs:
         uses: tj-actions/branch-names@v8
       
       - name: Current branch names
-        run: |
-          echo "${{ steps.branch-names.outputs.current_branch }}"
-        # Outputs: "feature/test" current PR branch.
+        if: "!contains(steps.branch-names.outputs.current_branch, 'feature')"
+        run: exit 1
