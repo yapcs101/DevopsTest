@@ -34,5 +34,5 @@ jobs:
         uses: tj-actions/branch-names@v8
       
       - name: Current branch names
-        if: "!contains(steps.branch-names.outputs.current_branch, 'feature')"
+        if: "!contains(steps.branch-names.outputs.current_branch, 'patch')"
         run: exit 1
